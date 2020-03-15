@@ -1,0 +1,91 @@
+.pt-popover-message {
+    width: 250px;
+    background: @block-content-bg;
+    position: fixed;
+    bottom: @padding-small-vertical;
+    right: @padding-small-horizontal;
+    display: none;
+    border: 1px solid @border-color;
+    border-radius: @border-radius-base;
+    box-shadow: 0 0 10px 0 @box-shadow-bg;
+    z-index: 1000;
+}
+
+.pt-popover-heading{
+    padding: @panel-heading-padding;
+    background: @panel-default-heading-bg;
+    border-bottom: 1px solid @border-color;
+    overflow: hidden;
+    position: relative;
+}
+
+.pt-popover-title {
+    line-height: @input-height-base;
+    height: @input-height-base;
+    font-size: 12px;
+    padding-right: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+.pt-popover-close,
+a.pt-popover-close{
+    font-family: "iconfont" !important;
+    width: 16px;
+    height: 16px;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+    color: @text-weak-color;
+    top: 50%;
+    right: @padding-small-horizontal;
+    margin-top: -8px;
+    &::before{
+        content:"\e77d";
+    }
+    &:hover{
+        background: @brand-danger;
+        color: #fff;
+    }
+}
+
+.pt-popover-close:hover {
+    background: url(./images/title_gb2.png) no-repeat;
+}
+
+.pt-popover-body {
+    padding: @padding-base-vertical @padding-base-horizontal;
+    max-height: 120px;
+    font-size: @font-size-base;
+    color: @text-weak-color;
+    overflow-y: auto;
+    overflow-x: hidden;
+    p{
+        margin: 0;
+        padding: 0;
+    }
+    .pt-popover-body-tit{
+        font-size: @font-size-large;
+        font-weight: bold;
+        color: @text-color;
+        margin-bottom: @padding-base-vertical;
+    }
+}
+
+.pt-popover-footer{
+    padding: @padding-small-vertical @padding-base-horizontal;
+    border-top: 1px solid @border-color;
+}
+
+.pt-popover-time {
+    font-size: 12px;
+    display: inline;
+}
+
+.pt-popover-link {
+    line-height: 20px;
+}

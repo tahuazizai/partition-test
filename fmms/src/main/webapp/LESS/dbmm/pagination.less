@@ -1,0 +1,21 @@
+.pagination{
+  margin: 0;
+    display: inline-table;
+    vertical-align: middle;
+    > li{
+        display: table-cell;
+        >span,>a{
+  				height: @input-height-base;
+  				line-height: @input-height-base;
+        }
+        &.pgtext > span{
+          height: @input-height-base;
+          line-height: @input-height-base;
+        }
+        &.last{
+            a{
+               .border-right-radius(@border-radius-base);
+            }
+        }
+    }
+}

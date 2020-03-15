@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置数据库相关参数properties的属性：${url} -->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:redis.properties"/>
+    <!-- redis数据源 -->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!-- 最大空闲数 -->
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <!-- 最大空连接数 -->
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        <!-- 最大等待时间 -->
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+        <!-- 返回连接时，检测连接是否成功 -->
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+    </bean>
+
+    <!--单机版 Spring-redis连接池管理工厂 -->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <!-- IP地址 -->
+        <property name="hostName" value="${redis.host}" />
+        <!-- 端口号 -->
+        <property name="port" value="${redis.port}" />
+        <property name="password" value="#{'${redis.password}'!=''?'${redis.password}':null}" />
+        <property name="database" value="${redis.database}" />
+        <!-- 超时时间 默认2000-->
+        <property name="timeout" value="${redis.timeout}" />
+        <!-- 连接池配置引用 -->
+        <property name="poolConfig" ref="poolConfig" />
+        <!-- usePool：是否使用连接池 -->
+        <property name="usePool" value="true"/>
+    </bean>
+
+    <!--集群版 Spring-redis连接池管理工厂 -->
+    <!--<bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <constructor-arg index="0">
+
+            &lt;!&ndash; 哨兵模式：RedisSentinelConfiguration，也是可以支持集群
+            <bean class="org.springframework.data.redis.connection.RedisSentinelConfiguration">
+                <constructor-arg>
+                    <set>
+                        <value>www.baidu.com:26379</value>
+                        <value>www.cnblogs.com:26479</value>
+                    </set>
+            </bean>
+            &ndash;&gt;
+
+            &lt;!&ndash; RedisClusterConfiguration， &ndash;&gt;
+            <bean class="org.springframework.data.redis.connection.RedisClusterConfiguration">
+                <constructor-arg>
+                    <list>
+                        <value>127.0.0.1:8001</value>
+                        <value>127.0.0.2:8002</value>
+                        <value>127.0.0.3:8003</value>
+                        <value>127.0.0.4:8004</value>
+                        <value>127.0.0.5:8005</value>
+                        <value>127.0.0.6:8006</value>
+                    </list>
+                </constructor-arg>
+                <property name="maxRedirects" value="5" />
+            </bean>
+
+
+        </constructor-arg>
+        <constructor-arg index="1">
+            <bean class="redis.clients.jedis.JedisPoolConfig">
+                &lt;!&ndash; 最大空闲数 &ndash;&gt;
+                <property name="maxIdle" value="${redis.maxIdle}" />
+                &lt;!&ndash; 最大空连接数 &ndash;&gt;
+                <property name="maxTotal" value="${redis.maxTotal}" />
+                &lt;!&ndash; 最大等待时间 &ndash;&gt;
+                <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+                &lt;!&ndash; 返回连接时，检测连接是否成功 &ndash;&gt;
+                <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+            </bean>
+        </constructor-arg>
+    </bean>-->
+
+    <!-- redis template definition -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory" />
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>
+        <property name="hashKeySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="hashValueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>
+        <!--开启事务  -->
+        <property name="enableTransactionSupport" value="true"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,128 @@
+.directory-container{
+    position: relative;
+    height: 100%;
+}
+
+.directory-nav{
+    .directory-main{
+        border-radius: @border-radius-base;
+        background: @directory-nav-bg;
+        overflow: hidden;
+    }
+    .directory-search{
+        padding: @padding-base-vertical @padding-base-horizontal;
+    }
+    .directory-list{
+       padding: @padding-large-vertical @padding-large-horizontal*3 @padding-large-vertical @padding-large-horizontal;
+       position: relative;
+       &:before{
+            top: 20px;
+            bottom: 20px;
+            right: 40px;
+            position: absolute;
+            content: " ";
+            width: 2px;
+            background-color: @divide-color;
+        }
+    }
+    a{
+        color: @text-color;
+    }
+    li{
+        height: @directory-nav-li-height;
+        line-height: @directory-nav-li-line-height;
+        padding-right:@padding-large-horizontal;
+        text-align: right;
+        position: relative;
+        cursor:pointer;
+        .directory-li-cont{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        &.l1{
+            font-size: @font-size-base;
+            a{
+                font-size: @font-size-base;
+                color: @text-color;
+            }
+        }
+        &.l2{
+            text-indent:0.6em;
+            font-size: @font-size-small;
+            a{
+                font-size: @font-size-small;
+                color: @text-color;
+            }
+        }
+        &.cur a{
+            color: @brand-success;
+        }
+        .c-dot{
+            position: absolute;
+            top: 50%;
+            right: -(@directory-nav-c-dot-width + 1);
+            margin-top:-6px;
+            z-index: 2;
+            display: block;
+            width: @directory-nav-c-dot-width;
+            height: @directory-nav-c-dot-height;
+            font-size: 0;
+            line-height: 0;
+            background: @divide-color;
+            border-radius: 50%;
+        }
+        .sub-c-dot{
+            position: absolute;
+            top: 50%;
+            right: -(@directory-nav-c-dot-width - 1);
+            margin-top:-4px;
+            z-index: 2;
+            display: block;
+            width: 8px;
+            height: 8px;
+            font-size: 0;
+            line-height: 0;
+            background: @directory-nav-bg;
+            border:2px solid @divide-color;
+            border-radius: 50%;
+        }
+    }
+    .cur-tag{
+        position: absolute;
+        right: @padding-large-horizontal*3 - @directory-nav-c-dot-width;
+        top: 26px;
+        z-index: 5;
+        margin-top: -6px;
+        display: block;
+        width: @directory-nav-c-dot-width;
+        height: @directory-nav-c-dot-height;
+        font-size: 0;
+        line-height: 0;
+        background: @brand-success;
+        border-radius: 50%;
+        transition:top .3s ease 0s;
+    }
+    .cur-tag-pass{
+        position: absolute;
+        right: 0;
+        top: 26px;
+        z-index: 5;
+        margin-top: -6px;
+        display: block;
+        width: 12px;
+        height: 12px;
+        font-size: 0;
+        line-height: 0;
+        background: @brand-primary;
+        border-radius: 50%;
+        transition:top .3s ease 0s;
+    }
+}
+
+.directory-side {
+    .panel.panel-state-active{
+        border-color: @state-success-border;
+        box-shadow: 0 0 3px 3px @border-color;
+    }
+}

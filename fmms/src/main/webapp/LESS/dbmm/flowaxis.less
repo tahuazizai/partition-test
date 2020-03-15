@@ -1,0 +1,110 @@
+.flowaxis{
+	position: relative;
+	.flowaxis-item{
+		margin: 0 auto;
+		margin-bottom: @padding-large-horizontal;
+	}
+	.flowaxis-item-col{
+		padding: 0;
+	}
+	.flowaxis-item-title{
+		position: relative;
+		text-align: right;
+		padding-right: @padding-large-horizontal + 24;
+		&:after{
+			content: '';
+			position: absolute;
+			right: 11px;
+			top: 0;
+			bottom: -@padding-large-horizontal;
+			width: 1px;
+			background: @border-color;
+			z-index: 1;
+		}
+	}
+	.flowaxis-item-main{
+		padding-left: @padding-large-horizontal;
+		position: relative;
+		&:before{
+			content: '';
+			position: absolute;
+			left: -12px;
+			top: 0;
+			bottom: -@padding-large-horizontal;
+			width: 1px;
+			background: @border-color;
+			z-index: 1;
+		}
+	}
+	.flowaxis-item-num-dot{
+		position: absolute;
+		right: 0;
+		z-index: 2;
+		top: 0;
+		width: 24px;
+		height: 24px;
+		line-height: 24px;
+		text-align: center;
+		background: @border-color;
+		color: @text-weaker-color;
+		border-radius: 50%;
+		&.primary-state{
+			background: @brand-primary;
+			color: #fff;
+		}
+		&.success-state{
+			background: @brand-success;
+			color: #fff;
+		}
+		&.warning-state{
+			background: @brand-warning;
+			color: #fff;
+		}
+		&.error-state{
+			background: @brand-danger;
+			color: #fff;
+		}
+	}
+	.flowaxis-item-content{
+		border: 1px solid @border-color;
+		border-radius: @border-radius-base;
+		padding: @padding-large-vertical @padding-large-horizontal;
+		background: @block-content-bg;
+		.flowaxis-item-heading{
+			color: @text-weaker-color;
+			line-height: @line-height-normal;
+			margin-bottom: @padding-small-vertical;
+		}
+		.flowaxis-item-body{
+			color: @text-color;
+		}
+	}
+	.flowaxis-item-reply{
+		padding-top: @padding-base-vertical;
+		padding-left: @padding-large-horizontal * 2;
+		position: relative;
+		&:after{
+			content: '\e878';
+			font-family:"iconfont" !important;
+			font-size: 30px;
+			line-height: @line-height-normal;
+			color: @border-color;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+	.flowaxis-item:last-child{
+		.flowaxis-item-main{
+			&:before{
+				display: none;
+			}
+		}
+	}
+	.flowaxis-item.active{
+		.flowaxis-item-content{
+			border-color: @brand-primary;
+		}
+	}
+}
+

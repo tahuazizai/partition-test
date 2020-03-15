@@ -1,0 +1,130 @@
+
+.step-line{
+	padding: @padding-base-vertical @step-left-width + @padding-base-horizontal;
+	position:relative;
+	z-index: 1;
+}
+.step-line{
+	.left,
+	.right{
+		position:absolute;
+		top:50%;
+		width:@step-left-width;
+		margin-top: @step-left-margin-top;
+		z-index: 1;
+		.glyphicon{
+			color: @step-line-icon-color;
+		}
+	}
+	.left{
+		left:0;
+	}
+	.right{
+		right:0;
+		text-align: right;
+	}
+	.step-cont{
+		height: 66px;
+		overflow: hidden;
+		ul{
+			zoom:1;
+			&:after{
+				display:block;
+				clear:both;
+				content:"";
+				visibility:
+				hidden;height:0
+			}
+		}
+		li{
+			position: relative;
+			text-align: center;
+			&:first-child,
+			&.first-line{
+		    	.step-mid-line{
+		    		left: 50%;
+		    	}
+			}
+			&:last-child,
+			&.last-line{
+		    	.step-mid-line{
+		    		right: 50%;
+		    	}
+		    }
+			.step-mid-line{
+				position: absolute;
+				top: 14px;
+				left:0;
+				right:0;
+				margin-top: -1px;
+			    content: " ";
+			    height: 2px;
+			    background-color: #C3CEE4;
+			    z-index: 0;
+			}
+			.step-dot-cont{
+				height: 24px;
+				margin-bottom: 5px;
+			}
+			.step-dot{
+				position:relative;
+				top: 3px;
+				display: inline-block;
+				width: @step-dot-width;
+				height: @step-dot-height;
+				border-width: @step-dot-border-width;
+				border-style:  @step-dot-border-style;
+				border-color:  @step-dot-border-color;
+				background-color: @step-dot-bg;
+				border-radius: 50%;
+				z-index:100;
+				& > i{
+					display: none;
+				}
+			}
+			.step-title,
+			.step-time{
+				padding: 0 @padding-base-horizontal;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.step-title{
+				color: #95A4BA;
+				font-size: @font-size-base;
+			}
+			.step-time{
+				display: none;
+				color: #C1CACE;
+				font-size: @font-size-small;
+			}
+			&.pass{
+				.step-mid-line{
+					background-color: @brand-success;
+				}
+				.step-title{
+					color: @brand-success;
+					font-size: @font-size-base;
+				}
+				.step-time{
+					display: block;
+					color: #C1CACE;
+					font-size: @font-size-small;
+				}
+				.step-dot{
+					width: @step-dot-pass-width;
+					height: @step-dot-pass-height;
+					background: @brand-success;
+					border-color: @brand-success;
+					text-align: center;
+					color: #fff;
+					font-size: @font-size-small;
+					& > i{
+						display: block;
+						margin-top: 2px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,47 @@
+.ui-help-assistant{
+    position: fixed;
+    bottom: 20%;
+    right: -40px;
+    z-index: 3000;
+    opacity: .6;
+    transition: all .3s;
+    cursor: pointer;
+    .help-assistant-main{
+        position: relative;
+        padding-left: 28px;
+        height: 32px;
+        background: #3c4c67;
+        border-radius: 4px 0 0 4px;
+        .help-assistant-text{
+            padding: 0 @padding-base;
+            height: 32px;
+            line-height: 32px;
+            color: #9eadc5;
+        }
+        &::before{
+            content: '';
+            background: url('../img/icon-help-bulb.png') no-repeat;
+            background-position: 0 0;
+            width: 28px;
+            height: 32px;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+        }
+    }
+    &:hover,
+    &.active{
+        right: 0;
+        opacity: 1;
+        .help-assistant-main{
+            .help-assistant-text{
+                color: #ffd92d;
+            }
+            &::before{
+                background-position: 0 100%;
+            }
+        }
+    }
+}

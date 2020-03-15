@@ -1,0 +1,26 @@
+.fontLevel(@color:@text-color,@size:@font-size-base){
+    color: @color;
+    font-size: @size;
+}
+
+.font-size-lv1{
+    .fontLevel(@size:@font-size-h1);
+    font-weight: bold;
+}
+.font-size-lv2{
+    .fontLevel(@size:@font-size-h2);
+    font-weight: bold;
+}
+.font-size-lv3{
+    .fontLevel(@size:@font-size-h3);
+    font-weight: bold;
+}
+.font-size-lv4{
+    .fontLevel(@size:@font-size-h4);
+}
+.font-size-lv5{
+    .fontLevel(@size:@font-size-h5);
+}
+.font-size-lv6{
+    .fontLevel(@color:@text-weak-color,@size:@font-size-h6);
+}

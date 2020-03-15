@@ -1,0 +1,38 @@
+.btn{
+  .button-size(@padding-xs-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+}
+.btn-lg {
+  .button-size(@padding-base-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}
+.btn-sm {
+  .button-size(@padding-xs-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+.btn-xs {
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+
+.btn-link{
+	&:visited,
+	&:hover,
+	&:active{
+		text-decoration: none;
+	}
+}
+
+.btn-separate-group,
+.btn-separate-group-vertical{
+	>.btn{
+		background-color: @btn-default-color;
+		color: @component-base-color;
+		 &:hover,&:focus,&:active,&:active:focus{
+		 	color: @component-base-color;
+			border-color: @btn-default-border;
+			background-color: darken(@btn-default-color, 7%);
+		}
+		&[disabled]{
+			background-color: @input-bg-disabled;
+			color: @btn-default-color;
+			.opacity(1);
+		}
+	}
+}

@@ -1,0 +1,187 @@
+.ui-splitter {
+    position: relative;
+    height: 600px;
+    color: @text-color;
+    -webkit-appearance: none;
+    line-height: normal;
+    outline: 0;
+    .ui-pane {
+        border: 1px solid @border-color;
+        background: @block-content-bg;
+        overflow: hidden;
+        &.none-border {
+        	border: none;
+        }
+        > .ui-splitter {
+            border-width: 0;
+            overflow: hidden;
+        }
+        > .ui-splitter-overlay {
+            opacity: 0;
+            filter: alpha(opacity=0);
+            position: absolute;
+        }
+    }
+    .ui-pane-heading,
+    .ui-pane-control,
+    .ui-pane-footer{
+        overflow: hidden;
+    }
+    .ui-pane-body{
+        overflow: auto;
+    }
+    .ui-scrollable {
+        overflow: auto;
+    }
+    .ui-ghost-splitbar,
+    .ui-splitbar {
+        position: absolute;
+        border-style: solid;
+        font-size: 0;
+        outline: 0;
+        user-select: none;
+    }
+    .ui-ghost-splitbar-horizontal,
+    .ui-splitbar-horizontal {
+        top: 0;
+        border-width: 0;
+        width: @padding-base-vertical;
+        border-top: 1px solid @border-color;
+        border-bottom: 1px solid @border-color;
+    }
+    .ui-ghost-splitbar-horizontal.ui-restricted-size-vertical,
+    .ui-splitbar-horizontal.ui-restricted-size-vertical,
+    .ui-ghost-splitbar-horizontal.ui-restricted-size-horizontal,
+    .ui-splitbar-horizontal.ui-restricted-size-horizontal {
+        background-color: @body-bg;
+    }
+    .ui-ghost-splitbar-vertical,
+    .ui-splitbar-vertical {
+        left: 0;
+        border-width: 0;
+        height: @padding-base-vertical;
+        border-left: 1px solid @border-color;
+        border-right: 1px solid @border-color;
+    }
+    .ui-ghost-splitbar-vertical.ui-restricted-size-vertical,
+    .ui-splitbar-vertical.ui-restricted-size-vertical,
+    .ui-ghost-splitbar-vertical.ui-restricted-size-horizontal,
+    .ui-splitbar-vertical.ui-restricted-size-horizontal {
+        background-color: @body-bg;
+    }
+    .ui-splitbar-draggable-horizontal {
+        cursor: w-resize;
+    }
+    .ui-splitbar-draggable-vertical {
+        cursor: n-resize;
+    }
+    .ui-restricted-size-horizontal,
+    .ui-restricted-size-vertical {
+        background-color: @body-bg;
+    }
+    .ui-splitbar {
+        background-color: @body-bg;
+    }
+    .ui-splitbar .ui-resize-handle {
+        display: none;
+    }
+    .ui-splitbar.ui-splitbar-static-horizontal,
+    .ui-splitbar.ui-splitbar-static-vertical {
+        width: 1px;
+    }
+    .ui-splitbar.ui-splitbar-horizontal .icon {
+        position: absolute;
+        top: 50%;
+        margin-top: -20px;
+        font-family: 'Glyphicons Halflings';
+        font-size: 10px;
+        z-index: 2;
+        font-size: 10px;
+        transform: scale(1);
+    }
+    .ui-splitbar.ui-splitbar-horizontal .ui-collapse-prev,
+    .ui-splitbar.ui-splitbar-horizontal .ui-expand-next {
+        cursor: pointer;
+        display: inline-block;
+        width: 8px;
+        height: 40px;
+        right: 0;
+    }
+    .ui-splitbar.ui-splitbar-horizontal .ui-collapse-prev:after,
+    .ui-splitbar.ui-splitbar-horizontal .ui-expand-next:after {
+        content: "\e257";
+        position: absolute;
+        top: 50%;
+        margin-top: -5px;
+        left: 50%;
+        margin-left: -5px;
+    }
+    .ui-splitbar.ui-splitbar-horizontal .ui-collapse-next,
+    .ui-splitbar.ui-splitbar-horizontal .ui-expand-prev {
+        cursor: pointer;
+        display: inline-block;
+        width: 8px;
+        height: 40px;
+        border-left: 0;
+        left: 0;
+    }
+    .ui-splitbar.ui-splitbar-horizontal .ui-collapse-next:after,
+    .ui-splitbar.ui-splitbar-horizontal .ui-expand-prev:after {
+        content: "\e258";
+        position: absolute;
+        top: 50%;
+        margin-top: -6px;
+        left: 50%;
+        margin-left: -6px;
+    }
+    .ui-splitbar.ui-splitbar-vertical .icon {
+        position: absolute;
+        left: 50%;
+        margin-left: -20px;
+        font-family: 'Glyphicons Halflings';
+        font-size: 10px;
+        z-index: 2;
+        font-size: 10px;
+        transform: scale(1);
+    }
+    .ui-splitbar.ui-splitbar-vertical .ui-collapse-prev,
+    .ui-splitbar.ui-splitbar-vertical .ui-expand-next {
+        cursor: pointer;
+        display: inline-block;
+        width: 40px;
+        height: 8px;
+        border: 1px solid #e3e3e3;
+        border-bottom: 0;
+        bottom: 0;
+        background-color: #fff;
+    }
+    .ui-splitbar.ui-splitbar-vertical .ui-collapse-prev:after,
+    .ui-splitbar.ui-splitbar-vertical .ui-expand-next:after {
+        content: "\e260";
+        position: absolute;
+        top: 50%;
+        margin-top: -6px;
+        left: 50%;
+        margin-left: -6px;
+    }
+    .ui-splitbar.ui-splitbar-vertical .ui-collapse-next,
+    .ui-splitbar.ui-splitbar-vertical .ui-expand-prev {
+        cursor: pointer;
+        display: inline-block;
+        width: 40px;
+        height: 8px;
+        border: 1px solid #e3e3e3;
+        border-top: 0;
+        top: 0;
+        background-color: #fff;
+    }
+    .ui-splitbar.ui-splitbar-vertical .ui-collapse-next:after,
+    .ui-splitbar.ui-splitbar-vertical .ui-expand-prev:after {
+        content: "\e259";
+        position: absolute;
+        top: 50%;
+        margin-top: -6px;
+        left: 50%;
+        margin-left: -6px;
+    }
+}

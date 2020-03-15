@@ -1,0 +1,221 @@
+.ui-label-container {
+    .ui-dynamic-labels {
+      background-color: transparent;
+        li {
+            &.label-item {
+                line-height: @font-size-base;
+                border: 1px solid @border-color;
+                background: @block-content-bg;
+                color: @text-color;
+                padding: @padding-small-vertical @padding-base-horizontal;
+                border-radius: @label-item-height;
+                &:hover{
+                    color: @btn-primary-color;
+                    background: @brand-primary;
+                    border: 1px solid @brand-primary;
+                }
+                &:active,
+                &:focus,
+                &.active{
+                    color: @btn-primary-color;
+                    background: @brand-primary;
+                    border: 1px solid @brand-primary;
+                }
+                >span {
+                    display: inline-block;
+                    max-width: @label-span-max-width;
+                    font-size: @font-size-base;
+                    line-height: 1;
+                    .text-overflow(ellipsis);
+                    vertical-align: middle;
+                }
+                .label-item-close {
+                    color: @btn-primary-color;
+                    font-size: @font-size-small;
+                    font-weight: lighter;
+                    &:hover {
+                        color: @btn-primary-color;
+                    }
+                    &[disabled] {
+                        cursor: @cursor-disabled;
+                        color: @text-disabled-color;
+                    }
+                    .glyphicon {
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+    .ui-multistep-labels {
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        outline: 0;
+        background-color: @input-bg;
+        cursor: text;
+        li {
+            &.label-item {
+                position: relative;
+                margin: 0 0 @label-item-margin 0;
+                padding: @label-item-padding - 10 @label-item-padding;
+                border: 1px solid @border-color;
+                border-radius: @border-radius-base;
+                cursor: pointer;
+                &:hover{
+                    color: @text-color;
+                    background: @block-hover-bg;
+                    border: 1px solid @border-color;
+                }
+                &:active,
+                &:focus{
+                    color: @text-color;
+                    background: @block-hover-bg;
+                    border: 1px solid @border-color;
+                }
+                >span {
+                    display: inline-block;
+                    max-width: @label-span-max-width;
+                    font-size: @font-size-base;
+                    line-height: none;
+                    .text-overflow(ellipsis);
+                    vertical-align: middle;
+                }
+                .label-item-close {
+                    position:absolute;
+                    top: 8px;
+                    right: 8px;
+                    color: @text-weak-color;
+                    padding: 0;
+                    font-size: @font-size-small;
+                    background: transparent;
+                    border: none;
+                    -webkit-appearance: none;
+                    vertical-align: middle;
+                    &:hover {
+                        color: @text-color;
+                    }
+                    &[disabled] {
+                        cursor: @cursor-disabled;
+                        color: @text-disabled-color;
+                    }
+                    .glyphicon {
+                        top: (3 - (@font-size-base / 12));
+                    }
+                }
+            }
+        }
+    }
+}
+.panel-min-height{
+    .ui-label-container {
+        .ui-dynamic-labels {
+            background: none !important;
+        }
+    }
+}
+
+//
+// Labels
+// --------------------------------------------------
+
+.label {
+  display: inline-block;
+  padding: @padding-xs-vertical @padding-base-horizontal;
+  font-size: @font-size-small;
+  font-weight: normal;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 2 * @padding-xs-vertical + @font-size-small;
+  font-size: @font-size-base;
+  // Add hover effects, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @label-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+}
+
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+
+.label-default {
+  color: @text-weak-color;
+  .label-variant(@label-default-bg);
+  border-color: @border-color;
+}
+
+.label-primary {
+  .label-variant(@label-primary-bg);
+}
+
+.label-success {
+  .label-variant(@label-success-bg);
+}
+
+.label-info {
+  .label-variant(@label-info-bg);
+}
+
+.label-warning {
+  .label-variant(@label-warning-bg);
+}
+
+.label-danger {
+  .label-variant(@label-danger-bg);
+}
+
+.label-line-default {
+  color: @text-color;
+  background-color: @label-default-bg;
+  border: 1px solid @label-default-bg;
+}
+
+.label-line-primary {
+  color: @label-line-primary-color;
+  background-color: @label-line-primary-bg;
+  border: 1px solid @label-line-primary-bg;
+}
+
+.label-line-success {
+  color: @label-line-success-color;
+  background-color:@label-line-success-bg;
+  border: 1px solid @label-line-success-bg;
+}
+
+.label-line-info {
+  color: @label-line-info-color;
+  background-color:@label-line-info-bg;
+  border: 1px solid @label-line-info-bg;
+}
+
+.label-line-warning {
+  color: @label-line-warning-color;
+  background-color:@label-line-warning-bg;
+  border: 1px solid @label-line-warning-bg;
+}
+
+.label-line-danger {
+  color: @label-line-danger-color;
+  background-color:@label-line-danger-bg;
+  border: 1px solid @label-line-danger-bg;
+}

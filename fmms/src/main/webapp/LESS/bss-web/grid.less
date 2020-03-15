@@ -1,0 +1,219 @@
+.ui-jqgrid{
+	border-bottom: none;
+	  th{
+	    font-weight: normal;
+	  }
+}
+.ui-jqgrid-view{
+	.ui-jqgrid-titlebar{
+		border-color: @border-color;
+		background: @panel-default-heading-bg;
+		padding:@padding-small-vertical @padding-base-horizontal;
+		.ui-jqgrid-title{
+			padding: 0;
+			font-size: @font-size-large;
+			font-weight: normal;
+			height: @input-height-base;
+			line-height: @input-height-base;
+			display: inline-block;
+		}
+	}
+	.ui-jqgrid-hdiv{
+		border-color: @border-color;
+		line-height: 1.1;
+	}
+	.ui-jqgrid-htable{
+		th[id*="cb"],
+		.ui-th-column{
+			border-color: @border-color;
+		}
+		.ui-th-column:last-child{
+			border-color: transparent;
+		}
+	}
+	.ui-jqgrid-bdiv{
+		border-color: @border-color;
+	}
+	.ui-jqgrid-btable tr.jqgrow td:last-child{
+		border-right-color: transparent;
+	}
+	.ui-jqgrid-btable {
+		tr{
+			&.ui-state-highlight{
+				.btn{
+					color: #fff;
+				}
+				.btn.btn-default{
+					color: @text-color;
+				}
+				.btn.btn-link{
+					color: @brand-primary;
+				}
+			}
+		}
+	}
+}
+.ui-jqgrid-pager{
+	height: auto;
+	border: 1px solid @border-color;
+	border-top: 1px solid @divide-color;
+	padding: @padding-base-vertical @padding-base-horizontal;
+	.ui-pg-control{
+		.pagination{
+			display: inline-table;
+			> li {
+				display: table-cell;
+				> span,
+				> a,{
+					height: @input-height-base;
+					line-height: @input-height-base;
+				}
+				&.gotext{
+					> span input{
+						height: @input-height-base;
+						line-height: @input-height-base;
+					}
+				}
+				&.rowtext{
+					> span select{
+						height: @input-height-base;
+						line-height: @input-height-base;
+					}
+				}
+			}
+		}
+	}
+	.ui-pg-button,
+	.ui-pg-control{
+		height: @input-height-base;
+	}
+}
+
+.ui-jqgrid.none-border{
+	border: none;
+	.ui-jqgrid-titlebar,
+	.ui-jqgrid-hdiv,
+	.ui-jqgrid-bdiv,
+	.ui-jqgrid-pager{
+		border-top-width: 0;
+		border-left-width: 0;
+		border-right-width: 0;
+	}
+	.ui-jqgrid-titlebar{
+		border-bottom: 1px solid @border-color;
+	}
+}
+
+.ui-jqgrid.none-has-border{
+	border: none;
+	.ui-jqgrid-titlebar,
+	.ui-jqgrid-hdiv,
+	.ui-jqgrid-bdiv,
+	.ui-jqgrid-pager{
+		border-width: 0;
+	}
+	.ui-jqgrid-btable tr.jqgrow td{
+		border-bottom-width: 0;
+		border-right-width: 0;
+	}
+}
+
+.ui-jqgrid.only-border{
+	border: none;
+	.ui-jqgrid-titlebar,
+	.ui-jqgrid-hdiv,
+	.ui-jqgrid-bdiv,
+	.ui-jqgrid-pager{
+		border-width: 0;
+	}
+	.ui-jqgrid-btable tr.jqgrow td{
+		border-bottom-width: 1px;
+		border-right-width: 0;
+	}
+}
+
+//== 表格树 ==//
+
+.ui-tree-jqgrid{
+	.ui-jqgrid-view {
+		 .ui-jqgrid-btable{
+		 	 tr.jqgrow{
+		 	 	 td{
+		 	 	 	border: 0;
+		 	 	 	padding-top: 0;
+		 	 	 	padding-bottom: 0;
+		 	 	 	line-height: @padding-base*3+4;
+		 	 	 }
+			 	.ui-treeline-first,
+			 	.ui-treeline-center,
+			   .ui-treeline-end{
+					   position: relative;
+						 display: inline-block;
+						 height: @padding-base*3+4;
+						 width: @padding-base*2;
+						 margin-right: @padding-base/2;
+						 vertical-align: top;
+				 }
+				 .ui-treeline-first{
+						 &::before{
+							 content: '';
+							 position: absolute;
+							 left: 4px;
+							 top: 0;
+							 bottom: 1px;
+							 border-left: 1px dotted @border-color;
+							 z-index: 1;
+						 }
+						 &::after{
+							 content: '';
+							 position: absolute;
+							 left: 5px;
+							 top: 50%;
+							 right: 0;
+							 border-top: 1px dotted @border-color;
+							 z-index: 1;
+						 }
+				 }
+				 .ui-treeline-center{
+						&::before{
+							content: '';
+							position: absolute;
+							left: 4px;
+							top: 0;
+							bottom: 1px;
+							border-left: 1px dotted @border-color;
+							z-index: 1;
+						}
+				 }
+				 .ui-treeline-end{
+						&::before{
+							content: '';
+							position: absolute;
+							left: 4px;
+							top: 0;
+							bottom: 50%;
+							border-left: 1px dotted @border-color;
+							z-index: 1;
+						}
+						&::after{
+							content: '';
+							position: absolute;
+							left: 5px;
+							bottom: 50%;
+							right: 0;
+							border-top: 1px dotted @border-color;
+							z-index: 1;
+						}
+				 }
+		 	 	 	&.ui-tree-jqchild-end{
+		 	 	 		td{
+		 	 	 			border-bottom: 1px solid @border-color;
+		 	 	 		}
+		 	 	 	}
+			 	 	&.even{
+			 	 		background:@block-accent-bg;
+			 	 	}
+		 	 }
+		 }
+	}
+}

@@ -1,0 +1,17 @@
+.dialog(@color) {
+  border-color: @color;
+  .modal-title{
+    color:  @color;
+  }
+  .modal-body {
+    background: @block-content-bg;
+    padding: @padding-base-vertical @padding-large-horizontal;
+  }
+  .modal-message {
+    background-color: transparent;
+  }
+  .modal-footer {
+    border-top: 1px solid @divide-color;
+    padding: @padding-base-vertical @padding-base-horizontal;
+  }
+}

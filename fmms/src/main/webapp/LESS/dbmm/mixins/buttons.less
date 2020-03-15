@@ -1,0 +1,52 @@
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+  &:focus,
+  &.focus {
+    color: @color;
+    background-color: mix(#fff,@background,20%);
+    border-color: mix(#fff,@border,20%);
+  }
+  &:hover {
+    color: @color;
+    background-color: mix(#fff,@background,20%);
+    border-color: mix(#fff,@border,20%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: mix(#000,@background,10%);
+    border-color: mix(#000,@border,10%);
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color;
+      background-color: mix(#000,@background,10%);
+      border-color: mix(#000,@border,10%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: @background;
+      border-color: @border;
+    }
+  }
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+}

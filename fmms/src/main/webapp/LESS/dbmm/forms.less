@@ -1,0 +1,278 @@
+label {
+  font-weight: normal;
+  margin-bottom: 0;
+  &.control-label{
+    color: @text-color;
+  	margin-bottom: 0;
+  }
+}
+form{
+  label {
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+}
+.form-control-static{
+  padding-top: (@padding-base-vertical + 1);
+  padding-bottom: (@padding-base-vertical + 1);
+}
+.form-control{
+	padding: @padding-xs-vertical @padding-base-horizontal;
+}
+
+.input-group-addon{
+	padding: 0 @padding-base-horizontal;
+	background: #fff;
+	color: @text-color;
+	font-size: @font-size-base;
+}
+.form-control-feedback{
+	color: @icon-color;
+	font-size: @font-size-small;
+}
+.form-clear-input{
+	box-shadow: none;
+	color: @text-color;
+	font-size:20px;
+}
+.form-group {
+  margin-bottom: @padding-base-horizontal;
+  word-break:break-all; 
+  word-wrap:break-word; 
+}
+.input-group{
+	.glyphicon{
+		color: @icon-color;
+		font-size: @font-size-small;
+	}
+}
+
+.form-control.disabled,
+.form-control[disabled]{
+    color:  @text-disabled-color;
+	.form-control-feedback{
+		color: @text-disabled-color;
+	}
+}
+.form-control-static{
+	color: @text-weak-color;
+  word-break:break-all; 
+  word-wrap:break-word; 
+	min-height: 1px;
+	p{
+		margin: 0;
+		padding: 0;
+	}
+}
+.input-group-ip{
+	.form-ip-addon{
+		display: table-cell;
+		position: relative;
+		.form-control{
+			outline: none;
+			box-shadow: none;
+		}
+		&:first-child{
+			.form-control{
+				border-radius: @border-radius-base 0 0 @border-radius-base;
+			}
+		}
+		&:last-child{
+			.form-control{
+				border-radius: 0 @border-radius-base @border-radius-base 0;
+			}
+		}
+		&:not(:first-child){
+			.form-control{
+				border-left: none;
+			}
+		}
+		&:not(:last-child){
+			&:after{
+				content: '';
+				position: absolute;
+				right: 0;
+				bottom: @padding-small-vertical;
+				display: block;
+				width: 2px;
+				height: 2px;
+				background: @border-color;
+				z-index: 2;
+			}
+			.form-control{
+				border-right: none;
+			}
+		}
+	}
+}
+
+.input-lg {
+  .input-size(@input-height-large; @padding-base-vertical; @padding-base-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+}
+.form-group-lg {
+  .form-control {
+    padding: @padding-base-vertical @padding-base-horizontal;
+  }
+  .form-control-static {
+    padding: (@padding-base-vertical + 1) @padding-base-horizontal;
+  }
+}
+
+.form-element-inline{
+    .form-control,
+    .form-control-static{
+        width: auto;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .form-control-static{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .form-control,
+    .input-group{
+        width: @input-width-base;
+    }
+    .input-group{
+        display: inline-table;
+        vertical-align: middle;
+        .input-group-addon,
+        .input-group-btn,
+        .form-control {
+          width: auto;
+        }
+        & > .form-control {
+          width: 100%;
+        }
+    }
+    .combobox-text{
+        min-width: 140px;
+        display: inline-block;
+    }
+}
+
+.form-control,
+.form-control-static{
+    &.inline{
+        width: auto;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.form-control.inline{
+    width: @input-width-base;
+}
+
+.form-control-static.inline{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.input-group{
+    &.inline{
+        display: inline-table;
+        vertical-align: middle;
+        .input-group-addon,
+        .input-group-btn,
+        .form-control {
+          width: auto;
+        }
+        & > .form-control {
+          width: 100%;
+        }
+    }
+}
+
+
+.form-inline {
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+    .form-control {
+      display: inline-block;
+      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      vertical-align: middle;
+    }
+    .form-control-static {
+      display: inline-block;
+    }
+    .input-group{
+      display: inline-table;
+      vertical-align: middle;
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+    .form-control,
+    .input-group{
+        width: @input-width-base;
+    }
+    .input-group > .form-control {
+      width: 100%;
+    }
+    .control-label {
+      margin-bottom: 0;
+      margin-left: @padding-small-horizontal;
+      margin-right: @padding-small-horizontal;
+      vertical-align: middle;
+    }
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+      label {
+        padding-left: 0;
+      }
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      position: relative;
+      margin-left: 0;
+    }
+    .has-feedback .form-control-feedback {
+      top: 0;
+    }
+}
+
+.form-horizontal {
+	.radio,
+	.checkbox,
+	.radio-inline,
+	.checkbox-inline {
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-top: (@padding-xs-vertical + 1); // Default padding plus a border
+	}
+	.form-control-static{
+		padding-bottom: 0;
+		padding-top: (@padding-xs-vertical + 1);
+	}
+	&.label-text-left{
+		.control-label{
+	      text-align: left;
+	    }
+        .form-group.required{
+            &>label::before{
+                content:'';
+                display: none;
+            }
+            &>label::after{
+                content: '*';
+                padding-left: 1.8px;
+            }
+        }
+	}
+	@media (min-width: @screen-xs-min) {
+	    .control-label{
+	      padding-top: (@padding-xs-vertical + 1); // Default padding plus a border
+        text-align: right;
+	    }
+    }
+}

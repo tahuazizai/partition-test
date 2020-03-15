@@ -1,0 +1,37 @@
+.dropdown-list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: @dropdown-padding;
+  max-height: @dropdown-max-width;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid @dropdown-border;
+  background-color: @dropdown-bg;
+  background-clip: padding-box;
+  z-index: @zindex-tooltip;
+  border-radius: @border-radius-base;
+  .box-shadow(@dropdown-shadow);
+
+  > li {
+    padding: @dropdown-item-padding;
+    color: @dropdown-link-color;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: @dropdown-link-hover-color;
+      background-color: @dropdown-link-hover-bg;
+    }
+  }
+  > .active {
+    &,
+    &:hover,
+    &:focus {
+      color: @dropdown-link-active-color;
+      background-color: @dropdown-link-active-bg;
+    }
+  }
+}

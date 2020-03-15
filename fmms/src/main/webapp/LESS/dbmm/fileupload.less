@@ -1,0 +1,101 @@
+// 图片上传的样式--列表形式 //
+.file-input{
+	.form-control{
+		margin-left: @padding-small-horizontal;
+	}
+	.fileinput-button{
+		margin-left: @padding-base-horizontal;
+	}
+}
+.file-upload-contaiter{
+	margin: -@padding-small-vertical -@padding-base-horizontal;
+	.file-upload-cont{
+		float: left;
+		width: 220px;
+		padding:0;
+		margin: @padding-small-vertical @padding-base-horizontal;
+	}
+	.file-upload{
+		position:relative;
+		border: 1px solid @border-color;
+		background-color: @file-upload-bg;
+		border-radius: @border-radius-base;
+		.file-media{
+			padding: @padding-base-vertical @padding-base-horizontal;
+			overflow: hidden;
+			.file-media-left{
+				float: left;
+				margin-right: -@file-upload-img-width;
+				&,img{
+					width: @file-upload-img-width;
+					height: @file-upload-img-height;
+				}
+			}
+			.file-media-body{
+				float: left;
+				width: 100%;
+			}
+			.file-media-left ~ .file-media-body{
+				.file-media-main{
+					padding-left: @file-upload-img-width + @padding-base-vertical;
+				}
+			}
+			.file-media-heading{
+				font-size: @font-size-base;
+				font-weight: normal;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.upload-body{
+				font-size: @font-size-base;
+				.memory{
+					color: @brand-primary;
+				}
+				.percent{
+					margin-left: @padding-base-vertical;
+					color: @text-weak-color;
+				}
+			}
+		}
+		.float-upload{
+			position: absolute;
+			top: -1px;
+			right: -1px;
+			bottom: -1px;
+			left: -1px;
+			border: 1px solid @border-color;
+			background-color: @brand-primary;
+			border-radius: @border-radius-base;
+			z-index: 2;
+			.float-upload-cont{
+				padding: @padding-large-vertical @padding-large-horizontal;
+				text-align: center;
+				color: #fff;
+				a{
+					color: #fff;
+					font-size: @font-size-base;
+				}
+			}
+		}
+	}
+	&.file-upload-horizontal{
+		.file-upload-cont{
+			float: none;
+			width: auto;
+		}
+	}
+}
+
+// 修改文件上传按钮样式 //
+
+.fileinput-button{
+	 input,
+	 .fileinput-input{
+		 width: 100%;
+		 height: 100%;
+		 z-index: 20;
+		 font-size: inherit !important;
+		 cursor: pointer;
+	 }
+}

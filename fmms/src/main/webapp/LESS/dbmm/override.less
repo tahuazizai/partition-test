@@ -1,0 +1,16 @@
+.required {
+  > label:after {
+    content: "";
+    color: red;
+    padding-left: 0;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  > label:before {
+    content: "*";
+    color: red;
+    padding-right: (@grid-gutter-width / 10) + 1;
+    vertical-align: middle;
+    display: inline-block;
+  }
+}

@@ -1,0 +1,19 @@
+.btn-group-stepper > .btn-stepper{
+	line-height: @line-height-normal;
+	padding: 0;
+	font-size: @font-size-small;
+}
+
+.btn-stepper{
+	> .glyphicon {
+    font-size: @font-size-small;
+  }
+}
+
+.ui-spinner-disabled{
+	.btn-stepper{
+		&,.glyphicon{
+		color: @text-disabled-color;
+		}
+	}
+}

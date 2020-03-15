@@ -1,0 +1,20 @@
+.ztree-search{
+	position: relative;
+	.search-heading{
+		padding: @padding-base-vertical @padding-base-horizontal;
+	}
+	.search-main{
+		max-height: 240px;
+		overflow-y: auto;
+		overflow-x: auto;
+	}
+	.search-result{
+		li{
+			padding: @padding-small-vertical @padding-base-horizontal;
+			&:hover,
+			&.active{
+				background: @block-hover-bg;
+			}
+		}
+	}
+}

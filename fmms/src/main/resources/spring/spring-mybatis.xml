@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!-- 扫描service包下所有使用注解的类型 -->
+    <context:component-scan base-package="com.ssm.group.service"/>
+
+    <!-- 配置数据库相关参数properties的属性：${url} -->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:jdbc.properties"/>
+
+    <!-- 数据库连接池 -->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driver}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="user" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"/>
+        <property name="minPoolSize" value="${c3p0.minPoolSize}"/>
+        <property name="autoCommitOnClose" value="${c3p0.autoCommitOnClose}"/>
+        <property name="checkoutTimeout" value="${c3p0.checkoutTimeout}"/>
+        <property name="acquireRetryAttempts" value="${c3p0.acquireRetryAttempts}"/>
+    </bean>-->
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+                  init-method="init" destroy-method="close">
+    <!--<property name="driverClassName" value="${driver}" />-->
+    <property name="url" value="${jdbc.url}" />
+    <property name="username" value="${jdbc.username}" />
+    <property name="password" value="${jdbc.password}" />
+    <!-- 配置初始化大小、最小、最大 -->
+    <property name="initialSize" value="${spring.datasource.initialSize}" />
+    <property name="minIdle" value="${spring.datasource.minIdle}" />
+    <property name="maxActive" value="${spring.datasource.maxActive}" />
+
+    <!-- 配置获取连接等待超时的时间 -->
+    <property name="maxWait" value="${spring.datasource.maxWait}" />
+
+    <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+    <property name="timeBetweenEvictionRunsMillis" value="${spring.datasource.timeBetweenEvictionRunsMillis}" />
+
+    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+    <property name="minEvictableIdleTimeMillis" value="${spring.datasource.minEvictableIdleTimeMillis}" />
+
+    <property name="testWhileIdle" value="${spring.datasource.testWhileIdle}" />
+
+    <!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
+    <property name="testOnBorrow" value="${spring.datasource.testOnBorrow}" />
+    <property name="testOnReturn" value="${spring.datasource.testOnReturn}" />
+    <property name = "maxOpenPreparedStatements" value ="20" />
+
+    <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+    <property name="poolPreparedStatements" value="${spring.datasource.poolPreparedStatements}"/>
+    <property name="maxPoolPreparedStatementPerConnectionSize" value="${spring.datasource.maxPoolPreparedStatementPerConnectionSize}"/>
+
+    <!-- 打开 removeAbandoned 功能 -->
+
+    <property name = "removeAbandoned" value = "${spring.datasource.removeAbandoned}" />
+
+    <!-- 1800 秒，也就是 30 分钟 -->
+
+    <property name = "removeAbandonedTimeout" value ="${spring.datasource.removeAbandonedTimeout}" />
+
+    <!-- 关闭 abanded 连接时输出错误日志 -->
+
+    <property name = "logAbandoned" value = "${spring.datasource.logAbandoned}" />
+    <!-- 这里配置提交方式，默认就是TRUE，可以不用配置 -->
+
+   <!-- <property name="defaultAutoCommit" value="true" />-->
+
+    <!-- 验证连接有效与否的SQL，不同的数据配置不同 -->
+    <property name="validationQuery" value="${spring.datasource.validationQuery}" />
+    <property name="filters" value="${spring.datasource.filters}" />
+    <property name="connectionProperties" value="${spring.datasource.connectionProperties}" />
+
+</bean>
+
+    <!-- 配置SqlSessionFactory对象 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+
+        <!-- 传入PageHelper的插件实现分页 -->
+        <property name="plugins">
+            <array>
+                <!-- 传入插件的对象 -->
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                            <!--用来识别数据库-->
+                            <prop key="helperDialect">oracle</prop>
+                            <!--使页数不会越界-->
+                            <prop key="reasonable">true</prop>
+                            <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+                            <prop key="pageSizeZero">true</prop>
+                            <!-- 支持通过Mapper接口参数来传递分页参数 -->
+                            <prop key="supportMethodsArguments">true</prop>
+                            <!--允许在运行时根据多数据源自动识别对应方言的分页 （不支持自动选择sqlserver2012，只能使用sqlserver）-->
+                            <prop key="autoRuntimeDialect">true</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
+        <!-- 扫描model包 使用别名 -->
+        <property name="typeAliasesPackage" value="com.ssm.group.entity"/>
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:com/ssm/group/mapper/*.xml"/>
+    </bean>
+
+    <!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        &lt;!&ndash; 注入sqlSessionFactory &ndash;&gt;
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        &lt;!&ndash; 给出需要扫描Dao接口包 &ndash;&gt;
+        <property name="basePackage" value="com.ssm.group.dao"/>
+    </bean>-->
+
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- 给出需要扫描Dao接口包 -->
+        <property name="basePackage" value="com.ssm.group.dao.mapper"/>
+      <!--  <property name="markerInterface" value="com.ssm.group.dao.base.BaseMapper" />-->
+        <property name="properties">
+            <value>
+                enableMethodAnnotation=true
+                ORDER=BEFORE
+                mappers=com.ssm.group.dao.base.BaseMapper
+            </value>
+        </property>
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置基于注解的声明式事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager" >
+        <tx:attributes>
+            <!-- <tx:method name="*" propagation="REQUIRED" rollback-for="Exception" />-->
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="query*" read-only="true"/>
+            <tx:method name="qry*" read-only="true"/>
+            <tx:method name="create*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="remove*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="logic*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <!--
+            切割点：pointcut
+                第一个*:任意返回值
+                第二个*:类名(任意类)
+                第三个*:方法名(任意方法)
+                (..):0-n参数,类型任意
+         -->
+        <aop:pointcut id="pointCut" expression="execution(* com.ssm..service..*.*(..))" />
+        <!--切割注入事物 ,植入事务：advisor-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointCut" order="2"/>
+        <!-- 动态数据源切割
+        <aop:aspect id="dynamicAspect" ref="dataSourceAspect">
+            <aop:after pointcut-ref="pointCut" method="afterSwitchDS"/>
+            <aop:before pointcut-ref="pointCut" method="beforeSwitchDS"/>
+        </aop:aspect>
+        -->
+    </aop:config>
+</beans>

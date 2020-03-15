@@ -1,0 +1,353 @@
+.ui-label-container {
+    .ui-dynamic-labels {
+      background-color: transparent;
+        li {
+            position: relative;
+            overflow: hidden;
+            &.label-item {
+                text-align: center;
+                line-height: @font-size-base;
+                border: 1px solid @label-line-primary-bg;
+                background: @label-line-primary-bg;
+                color: @label-line-primary-color;
+                padding: 0  @padding-xs-horizontal;
+                border-radius: @border-radius-base;
+                &:hover{
+                    >span{
+                      padding-left: 0;
+                      padding-right: @padding-base-horizontal*2;
+                    }
+                    .label-item-close{
+                      display: inline-block;
+                      right: @padding-xs-horizontal;
+                    }
+                }
+                &:active,
+                &:focus,
+                &.active{
+                    color: @btn-primary-color;
+                    background: @brand-primary;
+                    border: 1px solid @brand-primary;
+                    .label-item-close{
+                        &,&:hover{
+                            color: @btn-primary-color;
+                        }
+                    }
+                }
+                >span {
+                    display: block;
+                    max-width: @label-span-max-width;
+                    padding: @padding-small-vertical @padding-base-horizontal;
+                    font-size: @font-size-base;
+                    line-height: 1;
+                    transition: padding .2s;
+                    .text-overflow(ellipsis);
+                    vertical-align: middle;
+                }
+                .label-item-close {
+                    position: absolute;
+                    right: -100%;
+                    top: 50%;
+                    margin-top: -6px;
+                    transition: right .2s;
+                    color: @brand-danger;
+                    font-size: @font-size-small;
+                    font-weight: lighter;
+                    display: none;
+                    opacity:.8;
+                    &:hover {
+                        opacity: 1;
+                        color: @brand-danger;
+                    }
+                    &[disabled] {
+                        cursor: @cursor-disabled;
+                        color: @text-disabled-color;
+                    }
+                    .glyphicon {
+                        top: 0;
+                    }
+                }
+                &.label-del{
+                    background: @state-danger-bg;
+                    color: @state-danger-text;
+                    >span{
+                        color: @state-danger-text;
+                        text-decoration: line-through;
+                    }
+                    &:hover{
+                        >span{
+                            padding: @padding-small-vertical @padding-base-horizontal;
+                        }
+                        .label-item-close{
+                          display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ui-multistep-labels {
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        outline: 0;
+        background-color: @input-bg;
+        cursor: text;
+        li {
+            &.label-item {
+                position: relative;
+                margin: 0 0 @label-item-margin 0;
+                padding: @label-item-padding - 10 @label-item-padding;
+                border: 1px solid @border-color;
+                border-radius: @border-radius-base;
+                cursor: pointer;
+                &:hover{
+                    color: @text-color;
+                    background: @block-hover-bg;
+                    border: 1px solid @border-color;
+                }
+                &:active,
+                &:focus{
+                    color: @text-color;
+                    background: @block-hover-bg;
+                    border: 1px solid @border-color;
+                }
+                >span {
+                    display: inline-block;
+                    max-width: @label-span-max-width;
+                    font-size: @font-size-base;
+                    line-height: none;
+                    .text-overflow(ellipsis);
+                    vertical-align: middle;
+                }
+                .label-item-close {
+                    position:absolute;
+                    top: 8px;
+                    right: 8px;
+                    color: @text-weak-color;
+                    padding: 0;
+                    font-size: @font-size-small;
+                    background: transparent;
+                    border: none;
+                    -webkit-appearance: none;
+                    vertical-align: middle;
+                    &:hover {
+                        color: @text-color;
+                    }
+                    &[disabled] {
+                        cursor: @cursor-disabled;
+                        color: @text-disabled-color;
+                    }
+                    .glyphicon {
+                        top: (3 - (@font-size-base / 12));
+                    }
+                }
+            }
+        }
+    }
+}
+.panel-min-height{
+    .ui-label-container {
+        .ui-dynamic-labels {
+            background: none !important;
+        }
+    }
+}
+
+//
+// Labels
+// --------------------------------------------------
+
+.label {
+  display: inline-block;
+  padding: @padding-xs-vertical @padding-base-horizontal;
+  font-size: @font-size-small;
+  font-weight: normal;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 2 * @padding-xs-vertical + @font-size-small;
+  font-size: @font-size-base;
+  // Add hover effects, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @label-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+}
+
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+
+.label-default {
+  .label-variant(@label-default-bg);
+  color: @text-weak-color;
+  border-color: @border-color;
+}
+
+.label-primary {
+  .label-variant(@label-primary-bg);
+}
+
+.label-success {
+  .label-variant(@label-success-bg);
+}
+
+.label-info {
+  .label-variant(@label-info-bg);
+}
+
+.label-warning {
+  .label-variant(@label-warning-bg);
+}
+
+.label-danger {
+  .label-variant(@label-danger-bg);
+}
+
+.label-line-default {
+  color: @text-color;
+  background-color: @label-default-bg;
+  border: 1px solid @label-default-bg;
+}
+
+.label-line-primary {
+  color: @label-line-primary-color;
+  background-color: @label-line-primary-bg;
+  border: 1px solid @label-line-primary-bg;
+}
+
+.label-line-success {
+  color: @label-line-success-color;
+  background-color:@label-line-success-bg;
+  border: 1px solid @label-line-success-bg;
+}
+
+.label-line-info {
+  color: @label-line-info-color;
+  background-color:@label-line-info-bg;
+  border: 1px solid @label-line-info-bg;
+}
+
+.label-line-warning {
+  color: @label-line-warning-color;
+  background-color:@label-line-warning-bg;
+  border: 1px solid @label-line-warning-bg;
+}
+
+.label-line-danger {
+  color: @label-line-danger-color;
+  background-color:@label-line-danger-bg;
+  border: 1px solid @label-line-danger-bg;
+}
+
+.label-classify{
+    border: 1px solid @border-color;
+    background: @block-content-bg;
+    color: @text-weak-color;
+    overflow: hidden;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: @font-size-large;
+    &.label-size-lg{
+        line-height: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    &.label-size-md{
+        line-height: 22px;
+        width: 24px;
+        height: 24px;
+        font-size: @font-size-base;
+    }
+    &.label-size-sm{
+        line-height: 18px;
+        width: 20px;
+        height: 20px;
+        font-size: @font-size-base;
+    }
+}
+
+.label-state-dot-default,
+.label-state-dot-primary,
+.label-state-dot-info,
+.label-state-dot-success,
+.label-state-dot-warning,
+.label-state-dot-danger{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.label-state-dot-default{
+    background: @text-weaker-color;
+}
+.label-state-dot-primary{
+    background: @brand-primary;
+}
+.label-state-dot-info{
+    background: @brand-info;
+}
+.label-state-dot-success{
+    background: @brand-success;
+}
+.label-state-dot-warning{
+    background: @brand-warning;
+}
+.label-state-dot-danger{
+    background: @brand-danger;
+}
+
+.label-classify-primary,
+.label-classify-info,
+.label-classify-success,
+.label-classify-warning,
+.label-classify-danger{
+    color: #fff;
+}
+
+.label-classify-primary{
+    background: @brand-primary;
+    border-color: @brand-primary;
+}
+.label-classify-info{
+    background: @brand-info;
+    border-color: @brand-info;
+}
+.label-classify-success{
+    background: @brand-success;
+    border-color: @brand-success;
+}
+.label-classify-warning{
+    background: @brand-warning;
+    border-color: @brand-warning;
+}
+.label-classify-danger{
+    background: @brand-danger;
+    border-color: @brand-danger;
+}

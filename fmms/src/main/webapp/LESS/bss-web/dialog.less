@@ -1,0 +1,56 @@
+.ui-dialog{
+	.modal-header{
+		border-bottom: 1px solid @border-color;
+		overflow: hidden;
+		background: @panel-default-heading-bg;
+		.close{
+			font-size: @font-size-large;
+			height: @input-height-base;
+		}
+	}
+	.modal-title{
+		display: inline-block;
+		font-size: @font-size-large;
+		font-weight: bold;
+		height: @input-height-base;
+		line-height: @input-height-base;
+		display: inline-block;
+	}
+	.modal-header,
+	.modal-footer{
+		padding: @padding-base-vertical @padding-base-horizontal;
+	}
+
+}
+
+.popup-handle{
+	padding: @padding-large-vertical @padding-small-horizontal;
+	.glyphicon{
+		font-size: 30px;
+		vertical-align: middle;
+		margin-right: @padding-small-horizontal;
+	}
+	.popup-txt{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.popup-success{
+		.glyphicon{
+			color: @brand-success;
+		}
+	}
+	.popup-error{
+		.glyphicon{
+			color: @brand-danger;
+		}
+	}
+	.error-check{
+		padding: 0 0 0 @padding-base-horizontal;
+		text-align: left;
+		li{
+			list-style: disc;
+			font-size: @font-size-base;
+			color: @text-color;
+		}
+	}
+}

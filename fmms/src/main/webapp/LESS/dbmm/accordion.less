@@ -1,0 +1,28 @@
+.ui-accordion {
+  .panel {
+    margin: 0;
+    padding: 0 !important;
+    & + panel{
+      margin: 0;
+    }
+    .panel-heading{
+      padding: @padding-small-vertical @padding-base-horizontal;
+      & + .panel-body{
+          border-top: 1px solid @border-color;
+      }
+      .glyphicon{
+        height: @input-height-base;
+        line-height: @input-height-base;
+        display: inline-block;
+      }
+    }
+    .panel-title{
+      height: @input-height-base;
+      line-height: @input-height-base;
+      display: inline-block;
+    }
+  }
+  .panel-default{
+    border-radius: 0;
+  }
+}

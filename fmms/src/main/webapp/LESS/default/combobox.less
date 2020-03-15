@@ -1,0 +1,20 @@
+.combobox-readonly {
+  display: block;
+  position: relative;
+  padding-right: @input-height-base;
+  .text-overflow;
+  cursor: pointer;
+  .combobox-placeholder {
+    color: @gray-light;
+  }
+  &.disabled {
+    cursor: @cursor-disabled;
+    background-color: @input-bg-disabled;
+  }
+}
+
+.form-inline {
+  .combobox-text {
+    min-width: 140px;
+  }
+}
