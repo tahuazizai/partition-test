@@ -67,6 +67,18 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+        <!--<javaServiceGenerator
+                targetPackage="${servicePackage}"
+                targetProject="${serviceProject}"  >
+            <property name="enableSubPackages" value="true"/>
+            <property name="implementationPackage" value="${serviceImplPackage}"/>
+        </javaServiceGenerator>
+
+
+        <javaControllerGenerator targetPackage="${controllerPackage}" targetProject="${controllerProject}">
+            <property name="superClass" value="${baseControllerPackage}"></property>
+        </javaControllerGenerator>-->
+
         <!-- 配置表信息 -->
         <!-- <table tableName="person" domainObjectName="Person"> <generatedKey
             column="id" sqlStatement="mysql" identity="true"/> </table> -->
